@@ -14,13 +14,14 @@
                if (isset($_GET['id']))
                 {
                  
-                 $id=$_GET['id'];
+                  $id=$_GET['id'];
                       if (isset($_POST['save'])) 
                       {
                           $sl= isset($_POST['sl'])?$_POST['sl']:"";
+                           $main_menu= isset($_POST['main_menu'])?$_POST['main_menu']:"";
                           $link_name= isset($_POST['link_name'])?$_POST['link_name']:"";
                           $route_name= isset($_POST['route_name'])?$_POST['route_name']:"";
-                          $main_menu= isset($_POST['main_menu'])?$_POST['main_menu']:"";
+                         
 
                        $sql =$db->link->query("UPDATE `sub_menu` SET `sl`='$sl',`main_menu`='$main_menu',`link_names`='$link_name',`route_name`='$route_name' WHERE `id`='$id'");
                           if ($sql) 
@@ -50,20 +51,24 @@
                       <div class="input-single-box">
                         <label>Status</label>
                         <select name="main_menu" class="form-control select2">
-                            <option value="">Select One</option>
+                            <option >Select One</option>
                             <?php
                             $show_mainmenu=$db->link->query("SELECT * FROM `main_menu`");
                             if($show_mainmenu)
                             {
-                              while ($show_menu=$show_mainmenu->fetch_array() )
+                              while ($show_menu = $show_mainmenu->fetch_array() )
                               {
-                                if ($show_menu['0'] == $showdata['2']) 
+                                if ( $showdata['2'] == $show_menu['0']) 
                                 {
-                                  echo "suuuuu";
+                                  $selected ='selected';
                                 }
                                 else{
-                                  echo "unsssss";
+                                  $selected ='';
                                 }
+                                ?>
+                                <option <?php echo $selected; ?> value="<?php echo $show_menu['0']; ?>"><?php echo $show_menu['2']; ?>
+                                </option>
+                                <?php
                               }
                             }
                             ?>
