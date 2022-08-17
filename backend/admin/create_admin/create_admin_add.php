@@ -7,7 +7,7 @@
                   <h4>Create Admin</h4>
               </div>
               <div class="links">
-                  <a href="view_main_menu.php" class="btn btn-info">View Admin</a>
+                  <a href="create_admin_view.php" class="btn btn-info">View Admin</a>
               </div> 
               <div class="form-section">
            <?php
@@ -27,28 +27,35 @@
                   echo "<div class='alert alert-danger'>Password Does Not Match</div>";
                    }
                   else{
-                    $username=mysqli_real_escape_string($db->link,$username);
-                    $mail=mysqli_real_escape_string($db->link->$mail);
+                    $user_name=mysqli_real_escape_string($db->link,$user_name);
+                    $email=mysqli_real_escape_string($db->link,$email);
                     $phone=mysqli_real_escape_string($db->link,$phone);
                     $adress=mysqli_real_escape_string($db->link,$adress);
                     $status=mysqli_real_escape_string($db->link,$status);
                     $password=mysqli_real_escape_string($db->link,md5($password));
                     $confirm_password=mysqli_real_escape_string($db->link,md5($confirm_password));
 
-                    $password_recover= isset($_POST['password']?$_POST['password']:'');
+                    $password_recover= isset($_POST['password'])?$_POST['password']:'';
 
-                     $sql=$db->link->query("INSERT INTO `create_admin`( `user_name`, `email`, `phone`, `user_type`, `password`, `confirm_password`, `image`,`recover_password`) VALUES ('$user_name','$email','$phone','$status','$password','$confirm_password','$image','$recover_password')");
+                     $sql=$db->link->query("INSERT INTO `create_admin`(`user_name`, `email`, `phone`, `adress`, `user_type`, `password`, `confirm_password`,`image`,`recover_password`) VALUES 
+                     ('$user_name','$email','$phone','$adress','$status','$password','$confirm_password','$image','$password_recover')");
                   if($sql)
-                                {
-                                    echo "<div class='alert alert-success'>Data Insert Successfully</div>";
-                                
-                                        
-                                  
-                                }
-                                else
-                                {
-                                    echo "<div class='alert alert-danger'>Data Insert Unsuccessfllly!</div>";
-                                 }
+                        {
+                            $id=$db->link->insert_id;
+                            $path_info=$_FILES['image']['name'];
+                            $extension=pathinfo($path_info,PATHINFO_EXTENSION);
+                            $image_name=$id.'.'.$extension;
+                            $path='../../asset/img/admin/'.$image_name;
+                            move_uploaded_file($_FILES['image']['tmp_name'],$path);
+                            $db->link->query("UPDATE `create_admin` SET `image`='$image_name'WHERE `id`='$id'");
+
+
+                        echo "<div class='alert alert-success'>Data Insert Successfully</div>";          
+                        }
+                        else
+                            {
+                                echo "<div class='alert alert-danger'>Data Insert Unsuccessfllly!</div>";
+                             }
 
                   }
                 
@@ -57,7 +64,7 @@
               }
 
                ?> 
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     
                      <div class="input-single-box row">
                         <label class="col-lg-4 col-md-4 col-12">User Name</label>
@@ -77,7 +84,7 @@
                     </div>
                      <div class="input-single-box row">
                         <label class="col-lg-4 col-md-4 col-12">User Type</label>
-                        <select name="status" class="form-control select2 col-lg-5 col-md-5 col-12">
+                        <select name="status" class="form-control col-lg-5 col-md-5 col-12">
                             <option value="">Select One</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>

@@ -7,7 +7,7 @@
                   <h4>Edit Main Manu</h4>
               </div>
               <div class="links">
-                  <a href="view_main_menu.php" class="btn btn-info">View Main Menu</a>
+                  <a href="view_main_menu.php"class="btn btn-info">View Main Menu</a>
               </div> 
               <div class="form-section">
                <?php
@@ -57,7 +57,7 @@
                     </div>
                      <div class="input-single-box">
                         <label>Status</label>
-                        <select name="status" class="form-control select2">
+                        <select name="status" class="form-control">
                             <option value="">Select One</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>

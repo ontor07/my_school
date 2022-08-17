@@ -1,3 +1,15 @@
+<?php
+include("../database/connection.php");
+$db = new database();
+session_name("admin");
+session_start();
+if(isset($_SESSION['email']))
+{
+  echo "<script>location='../backend/'</script>";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +29,51 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
-        <h3>Login Here</h3>
+    <form method="post">
+        <h3>ADMIN LOGIN</h3>
+        <?php
+        $email= isset($_POST['email'])?$_POST['email']:'';
+        $password=isset($_POST['password'])?$_POST['password']:'';
+      if(isset($_POST["login"]))
+      {
+        $email = mysqli_real_escape_string($db->link,$email);
+					$password = mysqli_real_escape_string($db->link,md5($password));
+      
+        $sql= $db->link->query("SELECT * FROM `create_admin` WHERE `email`='$email' AND `password`='$password' ");
+        if(mysqli_num_rows($sql) > 0 )
+        {
+          
+          $fetch=$sql->fetch_assoc();
+          $_SESSION['admin_id']= $fetch['id'];
+          $_SESSION['admin_name']= $fetch['user_name'];
+          $_SESSION['email']=$fetch['email'];
+          $_SESSION['image']= $fetch['image'];
+          $_SESSION['type']= $fetch['user_type'];
+          $_SESSION['admin_type']= $fetch['admin_type'];
+          $_SESSION['message'];
+          if($_SESSION['type'] == 1)
+          {
+            echo"<script>location='../backend/'</script>";
+          }
+          else
+          {
+            echo "<div class='alert alert-danger'>You Are Not Active User</div>";
+          }
+        }
+        else
+        {
+          echo "<div class='alert alert-danger'>These Credential Does Not Match to Our Record</div>";
+        }
+      }
+        ?>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+        <label for="username">Email</label>
+        <input type="text" placeholder="Email" name="email">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" name="password">
 
-        <button>Log In</button>
+        <button type ="submit" name="login">Log In</button>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>

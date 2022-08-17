@@ -50,7 +50,7 @@
                     </div>
                      <div class="input-single-box">
                         <label>Status</label>
-                        <select name="status" class="form-control select2">
+                        <select name="status" class="form-control ">
                             <option value="">Select One</option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
