@@ -50,7 +50,7 @@
                     </div>
                       <div class="input-single-box">
                         <label>Status</label>
-                        <select name="main_menu" class="form-control select2">
+                        <select name="main_menu" class="form-control ">
                             <option >Select One</option>
                             <?php
                             $show_mainmenu=$db->link->query("SELECT * FROM `main_menu`");

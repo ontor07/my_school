@@ -16,10 +16,23 @@ if(!isset($_SESSION['email']))
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-<title>Ecommerce Dashboard &mdash; CodiePie</title>
+<title>Admin Dashboard </title>
+
+
+<!-- CSS Libraries -->
+<link rel="stylesheet" href="../../assets/modules/datatables/datatables.min.css">
+<link rel="stylesheet" href="../../assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../../assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+
+<link rel="stylesheet" href="../../assets/modules/select2/dist/css/select2.min.css">
+
 
 <!-- General CSS Files -->
 <link rel="stylesheet" href="../../assets/modules/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="../../assets/modules/bootstrap-daterangepicker/daterangepicker.css">
+
+
 <link rel="stylesheet" href="../../assets/modules/fontawesome/css/all.min.css">
 
 <!-- CSS Libraries -->
@@ -36,6 +49,11 @@ if(!isset($_SESSION['email']))
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/brands.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/solid.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+
+<link rel="stylesheet" href="../../assets/modules/izitoast/css/iziToast.min.css">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 </head>
 <body class="layout-4">

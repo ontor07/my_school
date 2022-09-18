@@ -53,7 +53,7 @@
                     </div>
                     <div class="input-single-box">
                         <label>Mian Menu</label>
-                        <select name="main_menu" class="form-control select2">
+                        <select name="main_menu" class="form-control ">
                             <option value="">Select One</option>
                             <?php
                             $main_menu=$db->link->query("SELECT * FROM `main_menu`");

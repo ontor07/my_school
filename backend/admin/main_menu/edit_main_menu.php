@@ -58,9 +58,25 @@
                      <div class="input-single-box">
                         <label>Status</label>
                         <select name="status" class="form-control">
-                            <option value="">Select One</option>
+                            <!-- <option value="">Select One</option> -->
+                            <?php
+                            
+                            if($showdata['4'] == 1)
+                            {
+                            ?>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+                                <option value="0">Inactive</option>
+                                <option value="1">Active</option>
+                            <?php
+                            }
+                            ?>
+                           
                         </select>
                     </div>
                     <div class="input-single-box" style="text-align: center;">

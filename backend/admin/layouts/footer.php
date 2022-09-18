@@ -52,6 +52,8 @@
 
 <script src="../../assets/modules/izitoast/js/iziToast.min.js"></script>
 
+<script src="../../assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+
 
 
 
@@ -64,6 +66,7 @@
   window.history.replaceState( null, null, window.location.href );
 }
 </script>
+
 <!-- reload problem solve start-->
 <script type="text/javascript">
 	if ( window.history.replaceState ) {
@@ -71,7 +74,6 @@
 }
 </script>
 <!-- reload problem solve end-->
-
 
 
 </body>

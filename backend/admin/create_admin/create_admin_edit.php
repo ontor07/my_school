@@ -44,7 +44,7 @@ include('../layouts/sidebar.php');
                                 $password = mysqli_real_escape_string($db->link,md5($password));
                                 $confirm_password = mysqli_real_escape_string($db->link,md5($confirm_password));
 
-                                $sql = $db->link->query("UPDATE `create_admin` SET `user_name`='$username',`email`='$mail',`phone`='$phone',`adress`='$adress',`user_type`='$type',`password`='$password',`confirm_password`='$confirm_password' WHERE `id`='$id' ");
+                                $sql = $db->link->query("UPDATE `create_admin` SET `user_name`='$username',`email`='$mail',`phone`='$phone',`adress`=$adress,`user_type`='$type',`password`='$password',`confirm_password`='$confirm_password' WHERE `id`='$id' ");
 
                                 if($sql)
                                 {
