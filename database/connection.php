@@ -28,17 +28,22 @@ class database
       $this->message="Database Connection Unsuccessfull";
     }
   }
+
+
   public function insert($table,$parrmeter=array())
   {
     // print_r($parrmeter);
+
     $column= implode(',',array_keys($parrmeter) );
     // echo $column;
 
     $data= implode("','",$parrmeter);
     // echo $data;
+
     $sql ="INSERT INTO  $table($column) VALUES ('$data')";
     // echo $sql;
     $result= $this->link->query($sql);
+
     if($result)
     {
       echo"<div class='alert alert-success'>Data Insert Succesfully</div>";
@@ -48,6 +53,28 @@ class database
       echo "<div class='alert alert-danger'>Data Insert Unsuccesfully</div>";
     }
   }
+
+
+
+  public function update($table,$parrmeter=array(),$id)
+  {
+    $args = array();
+    foreach($parrmeter as $key => $value)
+    {
+      $args[]= "$key = '$value'";
+    }
+    // print_r($args);
+    $sql ="UPDATE $table SET " .implode(',', $args);
+
+    $sql .= "WHERE $id";
+
+    // print $sql;
+    $result= $this->link->query($sql);
+  }
+
+
+
+
   function __destruct()
   {
     $this->link->close();

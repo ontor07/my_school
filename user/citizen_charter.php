@@ -10,7 +10,14 @@ include 'header.php';
 						<b>সিটিজেন চার্টার</b>
 					</div>
 					<div class="body-text">
-						<p></p>
+						<?php
+							$sql=$db->link->query("SELECT * FROM `citizen_charter` WHERE `id`='1'");
+							if($sql)
+							{
+								$show_data=$sql->fetch_assoc();
+							}
+						?>
+						<img src="../backend/asset/img/citizen_charter/<?php echo $show_data['image'];?>" alt="">
 					</div>
 				</div>
 			</div>

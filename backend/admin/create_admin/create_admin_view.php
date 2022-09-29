@@ -4,7 +4,7 @@
 <div class="main-content">
      <section class="section">
               <div class="form-header">
-                  <h4>Add Main Manu</h4>
+                  <h4>View Main Manu</h4>
               </div>
               <div class="links">
                   <a href="create_admin_add.php" class="btn btn-info">Add Main Menu</a>

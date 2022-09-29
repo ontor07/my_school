@@ -1,16 +1,24 @@
 <div class="left-body">
+	<?php
+	$sql=$db->link->query("SELECT * FROM `principal_message` WHERE `id`=1");
+	if($sql)
+	{
+		$show_data=$sql->fetch_assoc();
+	}
+	
+	?>
 				<div class="leftbody-single-box">
 					<div class="left-body-boxtitle">
 						<b>অধ্যক্ষের বার্তা</b>
 					</div>
 					<div class="box-image">
-						<img src="../assets/image/principal.jpg" class="img-fluid" alt="Principal Image">
+						<img src="../backend/asset/img/principal/<?php echo $show_data['image']?>" class="img-fluid" alt="Principal Image">
 					</div>
 					<div class="designation">
 						<span>অধ্যক্ষ</span>
 					</div>
 					<div class="subtitle">
-						<span>সরকারি ইকবাল মেমোরিয়াল কলেজ</span>
+						<span><?php echo $show_data['name'];?></span>
 					</div>
 					<div class="box-link">
 						<a href="principle_message.php">বার্তা....</a>
@@ -36,10 +44,17 @@
 
 				<div class="leftbody-single-box">
 					<div class="left-body-boxtitle">
+						<?php
+						$sql=$db->link->query("SELECT * FROM `contact` WHERE `id`=1");
+						if($sql)
+						{
+							$show_data=$sql->fetch_assoc();
+						}
+						?>
 						<b>গুগল ম্যাপ</b>
 					</div>
 					<div class="map">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.278213594243!2d91.29632051442161!3d22.939978825167614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37535c2e288eb5f3%3A0xf2241fe38ca356bb!2sGovernment%20Iqbal%20Memorial%20Degree%20College!5e0!3m2!1sen!2sbd!4v1654262947125!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						<iframe src="<?php echo $show_data['map'];?>"></iframe>
 					</div>
 				</div>
 
