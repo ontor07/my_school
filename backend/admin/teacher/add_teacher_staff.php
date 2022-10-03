@@ -6,6 +6,58 @@
               <div class="form-header">
                   <h4>ADD Teacher/Staff</h4>
               </div>
+              <div class="links">
+                  <a href="view_teacher_staff.php" class="btn btn-info">View Teacher/Staff</a>
+              </div> 
+
+              <?php
+              if(isset($_POST['save']))
+              {
+                $name = $_POST['name'];
+                $designation = $_POST['designation'];
+                $department = $_POST['department'];
+                $voter_id = $_POST['voter_id'];
+                $date = $_POST['date'];
+                $blood_gp = $_POST['blood_gp'];
+                $religion = $_POST['religion'];
+                $relation = $_POST['relation'];
+                $father_name = $_POST['father_name'];
+                $mother_name = $_POST['mother_name'];
+                $mobile = $_POST['mobile'];
+                $email = $_POST['email'];
+                $join_date = $_POST['join_date'];
+                $mpo_date = $_POST['mpo_date'];
+                $present = $_POST['present'];
+                $permanent = $_POST['permanent'];
+                $education = $_POST['education'];
+                $gender = $_POST['gender'];
+                $type = $_POST['type'];
+                // $image = $_POST['image'];
+                $status = $_POST['status'];
+
+                $db->insert('teacher_staff',['name'=>$name,'designation'=>$designation,'department'=>$department,'voter_id'=>$voter_id,'date'=>$date,'blood_gp'=>$blood_gp,'religion'=>$religion,'relation'=>$relation,'father_name'=>$father_name,'mother_name'=>$mother_name,'mobile'=>$mobile,'email'=>$email,'join_date'=>$join_date,'mpo_date'=>$mpo_date,'present'=>$present,'permanent'=>$permanent,'education'=>$education,'gender'=>$gender,'type'=>$type,'status'=>$status]);
+
+                $file= $_FILES['image']['name'];
+                
+                if($file)
+                {
+                    $id= $db->link->insert_id;
+                    // echo $id;
+                   $extension=pathinfo($file,PATHINFO_EXTENSION);
+
+                   $image_name= rand().'.'.$extension;
+
+                   $image_path='../../asset/img/teacher/'.$image_name;
+
+                   move_uploaded_file($_FILES['image']['tmp_name'],$image_path);
+
+
+                   $db->update('teacher_staff',['image'=>$image_name],"id='$id'");
+
+
+                }
+              }
+              ?>
               <div class="form-section">
                 
                 <form method="POST" enctype="multipart/form-data">
@@ -44,6 +96,9 @@
                                    <?php
                                  }
                                }
+
+
+                               
                                ?>
                                 
 
@@ -51,7 +106,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <label>Voter ID No.:</label>
-                                <input type="text" name="voter_id" class="form-control" value="" required >
+                                <input type="number" name="voter_id" class="form-control" value="" required >
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <label>Date Of Birth:</label>
@@ -138,7 +193,7 @@
                     </div>
                      <div class="input-single-box">
                         <label>Education Qualification :</label>
-                        <input type="text" name="education" class="form-control summernote">
+                        <textarea type="text" name="education" class="form-control summernote"></textarea>
                         
                     </div>
 

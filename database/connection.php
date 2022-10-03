@@ -10,6 +10,7 @@ class database
   public $database="dynamicschool";
   public $link;
   public $message;
+  public $result;
 
   function __construct()
   {
@@ -42,9 +43,9 @@ class database
 
     $sql ="INSERT INTO  $table($column) VALUES ('$data')";
     // echo $sql;
-    $result= $this->link->query($sql);
+    $this->result= $this->link->query($sql);
 
-    if($result)
+    if($this->result)
     {
       echo"<div class='alert alert-success'>Data Insert Succesfully</div>";
     }
@@ -58,6 +59,7 @@ class database
 
   public function update($table,$parrmeter=array(),$id)
   {
+    // $output = 0;
     $args = array();
     foreach($parrmeter as $key => $value)
     {
@@ -69,7 +71,8 @@ class database
     $sql .= "WHERE $id";
 
     // print $sql;
-    $result= $this->link->query($sql);
+    $this->result= $this->link->query($sql);
+    
   }
 
 
