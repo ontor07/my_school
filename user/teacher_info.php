@@ -11,7 +11,7 @@ include 'header.php';
 				{
 					while($department = $sql->fetch_assoc())
 					{
-						$sql_check = $db->link->query("SELECT * FROM `teacher_staff` WHERE `department`={$department['id']} AND `type`=1");
+						$sql_check = $db->link->query("SELECT * FROM `teacher_staff` WHERE `department`={$department['id']} AND`type`=1 AND `status`=1 ");
 						if(mysqli_num_rows($sql_check) > 0)
 						{
 							?>
@@ -30,7 +30,7 @@ include 'header.php';
 												<div class="col-6">
 													<div class="teacher_info-single-box">
 														<div class="teacher_image">
-															<img src="../assets/image/teacher.jpg" class="img-fluid">
+															<img src="../backend/asset/img/teacher/<?php echo $teacher['image'];?>" class="img-fluid">
 														</div>
 														<div class="information">
 															<table class="table table-bordered">
