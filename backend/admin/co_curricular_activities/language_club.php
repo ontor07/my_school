@@ -6,10 +6,10 @@ include('../layouts/sidebar.php');
         <div class="main-content">
             <section class="section">
                 <div class="form-header">
-                    <h4>Admission Procedure</h4>
+                    <h4>Language Club</h4>
                 </div>
                 <div class="links">
-                    <a href="view_admission_procedure.php" class="btn btn-info">View Admission Procedure</a>
+                    <a href="view_language_club.php" class="btn btn-info">View Language Club</a>
                 </div>
                 <?php 
                 if(isset($_POST['save']))
@@ -18,9 +18,26 @@ include('../layouts/sidebar.php');
                     $title = $_POST['title'];
                     $description = $_POST['description'];
 
-                    $db->insert('admission_procedure',['date'=>$date,'title'=>$title, 'description'=>$description]);
+                    $db->insert('language_club',['date'=>$date,'title'=>$title, 'description'=>$description]);
+
+                    $file = $_FILES['image']['name'];
+                    
+                    if($file)
+                    {
+                        $id = $db->link->insert_id;
+                        $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+                        $image_name = rand().'.'.$extension;
+
+                        $image_path = '../../asset/img/language_club/'.$image_name;
+
+                        move_uploaded_file($_FILES['image']['tmp_name'],$image_path);
+
+                        $db->update('language_club',['image'=>$image_name],"id='$id'");
+
+                    }
+
                 }
-                
                 ?>
                 <div class="form-section">
                     <form method="post" enctype="multipart/form-data">
@@ -32,12 +49,16 @@ include('../layouts/sidebar.php');
                             <label>Title</label>
                             <input type="text" name="title" class="form-control" placeholder="Title" required>
                         </div>
-                        
+
                         <div class="input-single-box">
                         <label>Description</label>
                         <textarea name="description" id="" class="form-control summernote"></textarea>
                         </div> 
-                        
+
+                        <div class="input-single-box">
+                            <label>Image</label>
+                            <input type="file" name="image" class="form-control" >
+                        </div>  
                         <div class="input-single-box" style="text-align: center;">
                             <input type="submit" name="save" class="btn btn-success" id="save">
                         </div>

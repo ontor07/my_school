@@ -15,7 +15,7 @@
                             <tr>
                                 
                                 <th>Name</th>
-                                <th>Designation</th>
+                                <!-- <th>Designation</th>
                                 <th>Department Name</th>
                                 <th>Voter ID No</th>
                                 <th>Date Of Birth</th>
@@ -23,15 +23,15 @@
                                 <th>Religion</th>
                                 <th>Relationship</th>
                                 <th>Father Name</th>
-                                <th>Mother Name</th>
+                                <th>Mother Name</th> -->
                                 <th>Mobile</th>
                                 <th>Email</th>
-                                <th>Join Date</th>
-                                <th>MPO Date</th>
+                                <!-- <th>Join Date</th>
+                                <th>MPO Date</th> -->
                                 <th>Present Address</th>
-                                <th>Permanent Address</th>
+                                <!-- <th>Permanent Address</th>
                                 <th>Education Qualification</th>
-                                <th>Gender</th>
+                                <th>Gender</th> -->
                                 <th>Type</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -49,24 +49,22 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $showdata['name']; ?></td>
-                                    <td><?php echo $showdata['designation']; ?></td>
-                                    <td><?php echo $showdata['title']; ?></td>
-                                    <td><?php echo $showdata['voter_id']; ?></td>
-                                    <td><?php echo $showdata['date']; ?></td>
-                                    <td><?php echo $showdata['blood_gp']; ?></td>
-                                    <td><?php echo $showdata['religion']; ?></td>
-                                    <td><?php echo $showdata['relation']; ?></td>
-                                    <td><?php echo $showdata['father_name']; ?></td>
-                                    <td><?php echo $showdata['mother_name']; ?></td>
+                                    
                                     <td><?php echo $showdata['mobile']; ?></td>
                                     <td><?php echo $showdata['email']; ?></td>
-                                    <td><?php echo $showdata['join_date']; ?></td>
-                                    <td><?php echo $showdata['mpo_date']; ?></td>
+                                    
                                     <td><?php echo $showdata['present']; ?></td>
-                                    <td><?php echo $showdata['permanent']; ?></td>
-                                    <td><?php echo $showdata['education']; ?></td>
-                                    <td><?php echo $showdata['gender']; ?></td>
-                                    <td><?php echo $showdata['type']; ?></td>
+                                    
+                                    <td>
+                                        <?php if ( $showdata['type']==1 ) {
+                                            echo 'Teacher';
+                                        }
+                                        else
+                                        {
+                                            echo 'Staff';
+                                        }
+                                        ?>
+                                    </td>
                                     <td> 
                                         <img src="../../asset/img/teacher/<?php echo $showdata['image']; ?>" class="img-fluid" alt="" height="80px" width="80px">
                                 </td>

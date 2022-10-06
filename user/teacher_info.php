@@ -52,7 +52,7 @@ include 'header.php';
 																</tr>
 																<tr>
 																	<td colspan="2" style="text-align:center;">
-																		<a href="view_teacherinfo.php" class="btn btn-outline-success">Details</a>
+																		<a href="view_teacherinfo.php?id=<?php echo $teacher['id']; ?>" class="btn btn-outline-success">Details</a>
 																	</td>
 																</tr>
 															</table>

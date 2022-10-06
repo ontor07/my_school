@@ -5,27 +5,21 @@ include 'header.php';
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-12">
 			<div class="left-body">
-				<?php
 				
-				
-					
-					
-						$sql_chack=$db->link->query("SELECT * FROM `teacher_staff` WHERE `type`=0 AND `status`=1");
-						if($sql_chack)
-						{
-							while($staff_show=$sql_chack->fetch_assoc())
-							{
-								
-							
-						
-						?>
 							<div class="divider">
 								<div class="left-body-boxtitle">
 									<i class="fa fa-caret-right"></i><b>কর্মচারী তথ্য</b><span style="color: yellow;"></span>
 								</div>
 								<div class="teacher-info-box">
 									<div class="row">
-										
+									<?php
+									$sql_chack=$db->link->query("SELECT * FROM `teacher_staff` WHERE `type`=0 AND `status`=1");
+										if($sql_chack)
+										{
+											while($staff_show=$sql_chack->fetch_assoc())
+											{
+
+										?>
 										<div class="col-6">
 											<div class="teacher_info-single-box">
 												<div class="teacher_image">
@@ -51,22 +45,22 @@ include 'header.php';
 														</tr>
 														<tr>
 															<td colspan="2" style="text-align:center;">
-																<a href="view_staffinfo.php" class="btn btn-outline-success">Details</a>
+																<a href="view_staffinfo.php?id=<?php echo $staff_show['id']; ?>" class="btn btn-outline-success">Details</a>
 															</td>
 														</tr>
 													</table>
 												</div>
 											</div>
 										</div>
-										
+										<?php
+												}	
+											}
+										?>
+				
 										
 									</div>
 								</div>
 							</div>
-				<?php
-						}	
-						}
-				?>
 				
 			</div>
 		</div>
