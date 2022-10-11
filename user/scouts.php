@@ -7,31 +7,43 @@ include 'header.php';
 			<div class="left-body">
 				<div class="left-single-box">
 					<div class="left-body-boxtitle">
-						<b>স্কাউটস</b>
+						<b>SCOUTS NEWS</b>
 					</div>
 					<div class="body-text">
 						<div class="news">
+								<?php 
+									$sql=$db->link->query("SELECT * FROM `scouts`");
+									while ($show_data = $sql->fetch_assoc()) {
+								?>
 							<div class="news-single">
 								<div class="row">
-									<div class="col-3">
+									
+										<div class="col-3">
 										<div class="news-image">
-											<img src="../assets/image/scoutImage/1.jpg" class="img-fluid">
+											<img src="../backend/asset/img/scouts/<?php echo $show_data['image'];?>" class="img-fluid">
 										</div>
 									</div>
 									<div class="col-8">
 										<div class="heading">
-											<a href="view_scout.php">
-												স্কাউট নিউজ
+											<a href="view_scout.php?id=<?php echo $show_data['id'];?>">
+											<?php echo $show_data ['description'];?>
 											</a>
-										</div>
+										</div> 	
 										<div class="pub-date">
-											<span>2022-06-05</span>
+											<span><?php echo $show_data['date'];?></span>
 										</div>
 									</div>
+									
+
+									
 								</div>
 							</div>
+						<?php
+						}
+						?>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>

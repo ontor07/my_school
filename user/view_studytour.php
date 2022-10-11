@@ -5,21 +5,31 @@ include 'header.php';
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-12">
 			<div class="left-body">
+				<?php
+				if (isset($_GET['id'])) {
+					$id=$_GET['id'];
+					$sql=$db->link->query("SELECT * FROM `study_tour` WHERE `id`=$id");
+					$show=$sql->fetch_assoc();
+				?>
 				<div class="left-single-box">
 					<div class="left-body-boxtitle">
-						<b>শিক্ষা সফর</b>
+						<b><?php echo $show['title']?></b>
 					</div>
 					<div class="body-text">
 						<div class="news">
 							<div class="news-image">
-								<img src="../assets/image/studyTour/1.jpg" class="img-fluid">
+								<img src="../backend/asset/img/study_tour/<?php echo $show['image']; ?>" class="img-fluid">
 							</div>
 							<div class="news_text">
-								<p>বিস্তারিত:</p><br>
+								<p><?php echo $show['description'];?></p><br>
 							</div>
 						</div>
 					</div>
 				</div>
+				<?php
+				}
+				?>
+				
 			</div>
 		</div>
 

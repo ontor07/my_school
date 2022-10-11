@@ -7,6 +7,14 @@ if(isset($_GET['id']))
 	$id = $_GET['id'];
 
 	// print $id;
+	$pathImage =$db->link->query("SELECT `image` FROM `language_club` WHERE `id`='$id' ");
+    $fetch_image= $pathImage->fetch_assoc();
+
+    $path = '../../asset/img/language_club/'.$fetch_image['image'];
+    if(file_exists($path))
+    {
+        unlink($path);
+    }
 
 	$sql = $db->link->query("DELETE FROM `language_club` WHERE `id`='$id'");
 

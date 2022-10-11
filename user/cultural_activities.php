@@ -11,25 +11,35 @@ include 'header.php';
 					</div>
 					<div class="body-text">
 						<div class="news">
+								<?php
+									$sql=$db->link->query("SELECT * FROM `cultural_activities`");
+									while ($show = $sql->fetch_assoc()) {
+								?>
 							<div class="news-single">
 								<div class="row">
-									<div class="col-3">
+									
+										<div class="col-3">
 										<div class="news-image">
-											<img src="../assets/image/culturalImage/1.jpg" class="img-fluid">
+											<img src="../backend/asset/img/cultural_activities/<?php echo $show['image'];?>" class="img-fluid">
 										</div>
 									</div>
 									<div class="col-8">
 										<div class="heading">
-											<a href="view_culturalactivities.php">
-												২৬ মার্চ মহান স্বাধীনতা দিবস ও জাতীয় দিবস উদযাপন উপলক্ষ্যে ইকবাল মেমোরিয়াল সরকারি কলেজ কতৃক আয়োজিত আলোচনা সভা ও সাংস্কৃতিক অনুষ্ঠান
+											<a href="view_culturalactivities.php?id=<?php echo $show['id'];?>">
+											<?php echo $show['title'];?>
 											</a>
 										</div>
 										<div class="pub-date">
-											<span>2022-06-05</span>
+											<span><?php echo $show['date'];?></span>
 										</div>
 									</div>
+									
+									
 								</div>
 							</div>
+							<?php	
+								}
+							?>
 						</div>
 					</div>
 				</div>

@@ -34,8 +34,9 @@ include('../layouts/sidebar.php');
                                     <td><?php echo $showdata['1']; ?></td>
                                     <td><?php echo $showdata['2']; ?></td>
                                     <td><i class="fa-solid fa-ellipsis"></i></td>
-                                    <td><a href="../../asset/img/student_cabinet/<?php echo $showdata['image']; ?>
-                                    "download="<?php echo $showdata['4']; ?>" class= "btn btn-warning btn-sm">Download</a></td>
+                                    <td>
+                                        <img src="../../asset/img/student_cabinet/<?php echo $showdata['image']; ?>" class="img-fluid" height="50px" width="50pxs" alt="">
+                                    </td>
                                     <td>
                                         <a href="edit_student_cabinet.php?id=<?php echo $showdata['0']; ?>" class="btn btn-outline-info">Edit</a>
                                         <a href="delete_student_cabinet.php?id=<?php echo $showdata['0']; ?>" class="btn btn-outline-danger">Delete</a>

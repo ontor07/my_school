@@ -10,7 +10,14 @@ include 'header.php';
 						<b>গার্লস গাইড</b>
 					</div>
 					<div class="body-text">
-						<p></p>
+					<?php
+					$sql= $db->link->query("SELECT * FROM `girls_guide` WHERE `id`=1");
+					if($sql)
+					{
+						$showdata=$sql->fetch_assoc();
+					}
+					?>
+						<p><?php echo $showdata['description']?></p>
 					</div>
 				</div>
 			</div>
