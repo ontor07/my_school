@@ -1,7 +1,14 @@
 <?php
 include('../database/connection.php');
 $db=new database();
+
+$data = $db->link->query("SELECT * FROM `settings` WHERE `id`=1");
+if($data)
+{
+ $showdata = $data->fetch_assoc();
+}
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +16,9 @@ $db=new database();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>School Project</title>
+	<!-- icon -->
+	<link rel="icon" type="image/x-icon" href="../backend/asset/img/settings/<?php echo $showdata['image'];?>">
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="https://fonts.maateen.me/bangla/font.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
@@ -63,7 +73,7 @@ $db=new database();
 				        <div style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/image/slider/2.jpg); background-position: center; background-size: cover;"></div>
 				        
 				        <span class="titleBar">
-				         <a href="#"><img src="../assets/logo.jpg" class="img-fluid rounded"></a>&nbsp;&nbsp;<span>সরকারি ইকবাল মেমোরিয়াল কলেজ<p style="padding-left: 78px;  margin-top: -25px;">স্থাপিত : ২০০১ খ্রিঃ</p></span><br>
+				         <a href="#"><img src="../backend/asset/img/settings/<?php echo $showdata['image'];?>" class="img-fluid rounded"></a>&nbsp;&nbsp;<span><?php echo $showdata['title'];?><p style="padding-left: 78px;  margin-top: -25px;">&nbsp;&nbsp;&nbsp; স্থাপিত : <?php echo $showdata['established'];?></p></span><br>
 				       </span>
 				     </div>
 				</div>
@@ -139,22 +149,39 @@ $db=new database();
 						        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown_menu2">
 						          <div class="row">
 						          	<div class="col-6">
+										
 						          		<ul>
 						          			<li><a href="teacher_info.php">শিক্ষক তথ্য</a></li>
-						          			<li><a href="department_teacher.php">বাংলা</a></li>
-						          			<li><a href="#">ইংলিশ</a></li>
+											  <?php
+										$sql=$db->link->query("SELECT * FROM `department` LIMIT 9");
+										while ($showdata= $sql->fetch_assoc()) {
+											?>
+											<li><a href="department_teacher.php?id=<?php echo $showdata['id'];?>"><?php echo $showdata['title'];?></a></li>
+										<?php
+										}
+										?>
+						          			
+						          			<!-- <li><a href="#">ইংলিশ</a></li>
 						          			<li><a href="#">পদার্থ বিজ্ঞান</a></li>
 						          			<li><a href="#">রসায়ন</a></li>
 						          			<li><a href="#">জীববিজ্ঞান</a></li>
 						          			<li><a href="#">হিসাব বিজ্ঞান</a></li>
 						          			<li><a href="#">ফিন্যান্স ও ব্যাংকিং</a></li>
 						          			<li><a href="#">অর্থনীতি</a></li>
-						          			<li><a href="#">ব্যাবস্থাপনা</a></li>
+						          			<li><a href="#">ব্যাবস্থাপনা</a></li> -->
 						          		</ul>
 						          	</div>
 						          	<div class="col-6">
 						          		<ul>
-						          			<li><a href="#">রাষ্ট্রবিজ্ঞান</a></li>
+										   <?php
+										$sql=$db->link->query("SELECT * FROM `department` LIMIT 9,9");
+										while ($showdata= $sql->fetch_assoc()) {
+											?> 
+											<li><a href="department_teacher.php?id=<?php echo $showdata['id'];?>"><?php echo $showdata['title'];?></a></li>
+										<?php
+										}
+										?>
+						          			<!-- <li><a href="#">রাষ্ট্রবিজ্ঞান</a></li>
 						          			<li><a href="#">সমাজ কর্ম</a></li>
 						          			<li><a href="#">ইসলামের ইতিহাস ও সংস্কৃতি</a></li>
 						          			<li><a href="#">দর্শন/যুক্তিবিদ্যা</a></li>
@@ -162,8 +189,8 @@ $db=new database();
 						          			<li><a href="#">কম্পিউটার অপারেশন</a></li>
 						          			<li><a href="#">লাইব্রেরী</a></li>
 						          			<li><a href="#">স্পোর্টস</a></li>
-						          			<li><a href="#">আইসিটি</a></li>
-						          			<li><a href="#">কর্মচারী তথ্য</a></li>
+						          			<li><a href="#">আইসিটি</a></li> -->
+						          			<li><a href="staff_info.php">কর্মচারী তথ্য</a></li>
 						          		</ul>
 						          	</div>
 						          </div>

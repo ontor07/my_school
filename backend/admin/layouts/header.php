@@ -7,6 +7,12 @@ if(!isset($_SESSION['email']))
 {
     echo "<script>location = '../login/'</script>";
 }
+
+$data = $db->link->query("SELECT * FROM `settings` WHERE `id`=1");
+if($data)
+{
+ $showdata = $data->fetch_assoc();
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +24,8 @@ if(!isset($_SESSION['email']))
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
 <title>Admin Dashboard </title>
 
+<!-- icon -->
+<link rel="icon" type="image/x-icon" href="../../asset/img/settings/<?php echo $showdata['image'];?>">
 
 <!-- CSS Libraries -->
 <link rel="stylesheet" href="../../assets/modules/datatables/datatables.min.css">
@@ -142,7 +150,7 @@ if(!isset($_SESSION['email']))
                     <div class="d-sm-none d-lg-inline-block">Hi,<?php echo $showuser['user_name'];?> </div></a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-title">Logged in 5 min ago</div>
-                        <a href="features-profile.html" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
+                        <a href="features-profile.php?id=<?php echo $showuser['id'];?>" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
                         <a href="features-activities.html" class="dropdown-item has-icon"><i class="fas fa-bolt"></i> Activities</a>
                         <a href="features-settings.html" class="dropdown-item has-icon"><i class="fas fa-cog"></i> Settings</a>
                         <div class="dropdown-divider"></div>

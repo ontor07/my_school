@@ -2,7 +2,7 @@
         <div class="main-sidebar sidebar-style-3">
             <aside id="sidebar-wrapper">
                 <div class="sidebar-brand">
-                 <a href="../../index.php"> <img src="../../asset/logo.png" class="img-fluid" style="height: 50px;width: 70%";></a>
+                 <a href="../../index.php"> <img src="../../asset/img/settings/<?php echo $showdata['image']; ?>" class="img-fluid" style="height: 50px;width: 70%";></a>
                 </div>
               
                 <ul class="sidebar-menu">
@@ -52,7 +52,10 @@
                         }
                     }
                     ?>
-          
+                    <li class="menu-header">Settings</li>
+                    <li class="nav-link">
+                        <a href="../settings/settings.php" ><i class="fa fa-gears"></i> <span>Settings</span></a>  
+                    </li>
                 </ul>
                 
             </aside>
