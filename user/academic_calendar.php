@@ -12,6 +12,7 @@ include 'header.php';
 					<div class="body-text">
 						<div class="data">
 							<table class="table table-hover table-bordered" id="myTable">
+								
 								<thead>
 									<tr>
 										<th>SL</th>
@@ -20,16 +21,24 @@ include 'header.php';
 										<th>Download</th>
 									</tr>
 								</thead>
-								<tbody>
+								<?php
+								$sql=$db->link->query("SELECT * FROM `academic_calender`");
+								while ($showdata=$sql->fetch_assoc()) {
+									?>
+									<tbody>
 									<tr>
-										<td>1</td>
-										<td>Student Info Chart</td>
-										<td>2022-05-14</td>
+										<td></td>
+										<td><?php echo $showdata['title'];?></td>
+										<td><?php echo $showdata['date'];?></td>
 										<td>
-											<a href="#" class="btn btn-danger"><img src="../assets/image/pdf_icon.png" class="img-fluid"></a>
+											<a href="../backend/asset/img/academic_calender/<?php echo $showdata['image'];?>" class="btn btn-danger"><img src="../assets/image/pdf_icon.png" class="img-fluid"></a>
 										</td>
 									</tr>
 								</tbody>
+								<?php	
+								}
+								?>
+								
 							</table>
 						</div>
 					</div>

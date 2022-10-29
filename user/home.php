@@ -15,15 +15,23 @@ include 'header.php';
 						</div>
 						<div class="notices">
 							<ul>
-								<li><i class="fa fa-caret-right"></i><a href="#">সুবর্ণ জয়ন্তী কুইজ প্রতিযোগিতার বিজ্ঞপ্তি</a></li>
-								<li><i class="fa fa-caret-right"></i><a href="#">ক্লাস রুটিন</a></li>
+							<?php
+										$sql=$db->link->query("SELECT * FROM `notice` LIMIT 5 ");
+										while ($showdata= $sql->fetch_assoc()) {
+											?>
+											<li><i class="fa fa-caret-right"></i><a href="view_notice.php?id=<?php echo $showdata['id'];?>"><?php echo $showdata['title'];?></a></li>
+										<?php
+										}
+										?>
+								
+								<!-- <li><i class="fa fa-caret-right"></i><a href="#">ক্লাস রুটিন</a></li>
 								<li><i class="fa fa-caret-right"></i><a href="#">ডিগ্রি (পাস) ২য় বর্ষ বিলম্ব ফি সহ ফরম পূরণ সংক্রান্ত বিজ্ঞিপ্তি</a></li>
 								<li><i class="fa fa-caret-right"></i><a href="#">২০২০ সালের ডিগ্রি (পাস) ২য় বর্ষ পরীক্ষার সময়সূচি বিজ্ঞপ্তি</a></li>
 								<li><i class="fa fa-caret-right"></i><a href="#"> ২০২১ - ২০২২ শিক্ষাবর্ষের একাদশ শ্রেণিতে ভর্তিকৃত (বিজ্ঞান, মানবিক ও ব্যবাসয় শিক্ষা ) বিভাগের উপবৃত্তি সংক্রান্ত বিজ্ঞপ্তি ।</a></li>
-								<li><i class="fa fa-caret-right"></i><a href="#"> ২০২১-২০২২ শিক্ষাবর্ষে একাদশ শ্রেণিতে ভর্তির ৫ পর্যায়ে আবেদন সংক্রান্ত বিজ্ঞপ্তি।</a></li>
+								<li><i class="fa fa-caret-right"></i><a href="#"> ২০২১-২০২২ শিক্ষাবর্ষে একাদশ শ্রেণিতে ভর্তির ৫ পর্যায়ে আবেদন সংক্রান্ত বিজ্ঞপ্তি।</a></li> -->
 							</ul>
 								<div class="all-notices">
-								<a href="#">সকল নোটিশ</a>
+								<a href="view_notice.php">সকল নোটিশ</a>
 							</div>
 						</div>
 					</div>
